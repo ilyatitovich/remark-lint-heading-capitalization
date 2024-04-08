@@ -1,10 +1,6 @@
 # remark-lint-heading-capitalization
 
-> [remark-lint](https://github.com/remarkjs/remark-lint) plugin to ensure that your Markdown headings capitalization is correct.
-
-The plugin enables you to verify the correct capitalization of words in Markdown file headings.
-
-It follows these capitalization rules:
+[remark-lint](https://github.com/remarkjs/remark-lint) plugin to ensure that your Markdown headings capitalization is correct.
 
 1. Capitalize the first word, as well as all nouns, pronouns, verbs, adjectives, and adverbs.
 2. Articles, conjunctions, and prepositions should remain lowercase.
