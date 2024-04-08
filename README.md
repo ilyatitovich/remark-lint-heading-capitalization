@@ -41,11 +41,11 @@ When this rule is turned on, the following `invalid.md` is **not** ok:
 ```
 
 ```text
-1:1-1:26 warning Heading capitalization error. Expected: 'Where to Ask Questions' found: 'Where To Ask questions' title-capitalization remark-lint
+1:1-1:26 warning Heading capitalization error. Expected: 'Where to Ask Questions' found: 'Where To Ask questions' heading-capitalization remark-lint
 
-2:1-2:12 warning Heading capitalization error. Expected: 'An Apple' found: 'an Apple'                             title-capitalization remark-lint
+2:1-2:12 warning Heading capitalization error. Expected: 'An Apple' found: 'an Apple'                             heading-capitalization remark-lint
 
-3:1-3:24 warning Heading capitalization error. Expected: 'Enable 2FA on GitHub' found: 'Enable 2FA On GitHub'     title-capitalization remark-lint
+3:1-3:24 warning Heading capitalization error. Expected: 'Enable 2FA on GitHub' found: 'Enable 2FA On GitHub'     heading-capitalization remark-lint
 
-4:1-4:19 warning Heading capitalization error. Expected: 'Flight-or-Fight' found: 'Flight-Or-fight'               title-capitalization remark-lint
+4:1-4:19 warning Heading capitalization error. Expected: 'Flight-or-Fight' found: 'Flight-Or-fight'               heading-capitalization remark-lint
 ```
