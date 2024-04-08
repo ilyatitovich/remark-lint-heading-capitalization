@@ -4,7 +4,6 @@ import { visit } from 'unist-util-visit'
 import lowerCaseWords from './lib/lowerCaseWords.js'
 import { capitalizeWord, isUpperCase } from './lib/utils.js'
 
-
 const cache = {}
 
 export function fixTitle(title) {
