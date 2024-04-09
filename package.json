@@ -35,6 +35,10 @@
     "eslint": "^8.57.0",
     "size-limit": "^11.0.2"
   },
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
   "c8": {
     "exclude": [
       "**/*.test.*",
