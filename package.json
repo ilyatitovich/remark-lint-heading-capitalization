@@ -24,7 +24,8 @@
     "test": "pnpm run /^test:/",
     "test:lint": "eslint .",
     "test:coverage": "c8 pnpm bnt",
-    "test:size": "size-limit"
+    "test:size": "size-limit",
+    "test:plugin": "node ./test/test.js"
   },
   "devDependencies": {
     "@logux/eslint-config": "^53.0.0",
@@ -33,7 +34,9 @@
     "c8": "^9.1.0",
     "clean-publish": "^4.3.0",
     "eslint": "^8.57.0",
-    "size-limit": "^11.0.2"
+    "remark": "^15.0.1",
+    "size-limit": "^11.0.2",
+    "vfile-sort": "^4.0.0"
   },
   "exports": {
     ".": "./index.js",
