@@ -11,6 +11,12 @@ Some additional points to note:
 - The plugin only checks the first letter of words that require capitalization.
 - Words written in uppercase are automatically skipped by the plugin.
 
+## Install
+
+```sh
+npm install remark-lint-heading-capitalization
+```
+
 ## Usage
 
 Use like any other [remark-lint](https://github.com/remarkjs/remark-lint) plugin.
