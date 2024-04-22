@@ -22,6 +22,12 @@ npm install remark-lint-heading-capitalization
 Use like any other [remark-lint](https://github.com/remarkjs/remark-lint) plugin.
 Check out the [remark-lint](https://github.com/remarkjs/remark-lint) documentation for details.
 
+## Options
+
+### `lowerCaseWords`
+
+You can set your list of words to be in lower case.
+
 ## Examples
 
 When this rule is turned on, the following `valid.md` is ok:

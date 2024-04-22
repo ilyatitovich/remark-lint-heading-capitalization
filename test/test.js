@@ -5,6 +5,7 @@ import test from 'node:test'
 import { remark } from 'remark'
 import { compareMessage } from 'vfile-sort'
 import remarkLintHeadingCapitalization from '../index.js'
+import lowerCaseWords from '../lib/lowerCaseWords.js'
 
 const invalidMdPath = path.join(import.meta.dirname, 'docs', 'invalid.md')
 const validMdPath = path.join(import.meta.dirname, 'docs', 'valid.md')
@@ -36,4 +37,12 @@ test('no errors found', async () => {
     .process(validMd)
 
   assert.strictEqual(result.messages.length, 0)
+})
+
+test('custom list of lowercase words', async () => {
+  const result1 = await remark()
+    .use(remarkLintHeadingCapitalization, { lowerCaseWords: ['die', 'der', 'und'] })
+    .process('# Der Wolf und die Sieben Ziegen')
+
+  assert.strictEqual(result1.messages.length, 0)
 })
