@@ -6,7 +6,7 @@ import { capitalizeWord, isUpperCase } from './lib/utils.js'
 
 const cache = {}
 
-export function fixTitle(title) {
+export function fixTitle(title, options) {
   const correctTitle = title.replace(/[^\s-]\w+/g, (word, index) => {
     // If the word is already in uppercase, return it as is.
     if (isUpperCase(word)) {
@@ -15,7 +15,7 @@ export function fixTitle(title) {
 
     // If the word is not the first word in the title and should be lowercase, return it in lowercase.
     const lowerCaseWord = word.toLowerCase()
-    if (index !== 0 && lowerCaseWords[lowerCaseWord]) {
+    if (index !== 0 && [...lowerCaseWords, ...(options.lowerCaseWords ?? [])].includes(lowerCaseWord)) {
       return lowerCaseWord
     }
 
@@ -33,7 +33,7 @@ export function fixTitle(title) {
   return correctTitle
 }
 
-function headingCapitalization(tree, file) {
+function headingCapitalization(tree, file, options = {}) {
   visit(tree, 'heading', node => {
     const title = node.children.map(child => child.value).join('')
 
@@ -42,7 +42,7 @@ function headingCapitalization(tree, file) {
       return
     }
 
-    const correctTitle = fixTitle(title)
+    const correctTitle = fixTitle(title, options)
 
     if (correctTitle !== title) {
       file.message(
