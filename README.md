@@ -22,11 +22,14 @@ npm install remark-lint-heading-capitalization
 Use like any other [remark-lint](https://github.com/remarkjs/remark-lint) plugin.
 Check out the [remark-lint](https://github.com/remarkjs/remark-lint) documentation for details.
 
-## Options
+### `Options`
 
-### `lowerCaseWords`
+Configuration (TypeScript type).
 
-You can set your list of words to be in lower case.
+###### Fields
+
+- `lowerCaseWords` (`string[]`, optional, example: `['die', 'der', 'und']`)
+  — extends the default list of lowercase words;
 
 ## Examples
 
