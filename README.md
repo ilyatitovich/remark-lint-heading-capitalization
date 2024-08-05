@@ -29,7 +29,7 @@ Configuration (TypeScript type).
 ###### Fields
 
 - `lowerCaseWords` (`string[]`, optional, example: `['die', 'der', 'und']`)
-  — extends the default list of lowercase words;
+  — extends the default list of lowercase words.
 
 ## Examples
 
