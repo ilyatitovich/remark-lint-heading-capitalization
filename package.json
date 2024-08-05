@@ -17,25 +17,21 @@
   },
   "sideEffects": false,
   "engines": {
-    "node": "^18.0.0 || >=20.0.0"
+    "node": ">=20.0.0"
   },
   "type": "module",
   "scripts": {
     "test": "pnpm run /^test:/",
     "test:lint": "eslint .",
     "test:coverage": "c8 pnpm bnt",
-    "test:size": "size-limit",
     "test:plugin": "node ./test/test.js"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^53.0.0",
-    "@size-limit/preset-small-lib": "^11.0.2",
     "better-node-test": "^0.5.0",
     "c8": "^9.1.0",
     "clean-publish": "^4.3.0",
     "eslint": "^8.57.0",
     "remark": "^15.0.1",
-    "size-limit": "^11.0.2",
     "vfile-sort": "^4.0.0"
   },
   "exports": {
@@ -56,12 +52,6 @@
     "skip-full": true,
     "clean": true
   },
-  "size-limit": [
-    {
-      "import": "{ }",
-      "limit": "0 B"
-    }
-  ],
   "prettier": {
     "arrowParens": "avoid",
     "jsxSingleQuote": false,

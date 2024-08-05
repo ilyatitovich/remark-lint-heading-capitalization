@@ -7,7 +7,8 @@ import { capitalizeWord, isUpperCase } from './lib/utils.js'
 const cache = {}
 
 export function fixTitle(title, options) {
-  const correctTitle = title.replace(/[^\s-]\w+/g, (word, index) => {
+  const correctTitle = title.replace(/[^\s-]+/g, (word, index) => {
+
     // If the word is already in uppercase, return it as is.
     if (isUpperCase(word)) {
       return word
