@@ -49,3 +49,13 @@ test('custom list of lowercase words', async () => {
 
   assert.strictEqual(result1.messages.length, 0)
 })
+
+test('custom list of excluded words', async () => {
+  const result1 = await remark()
+    .use(remarkLintHeadingCapitalization, {
+      exclude: ['remark-lint', 'remark']
+    })
+    .process('# Contributing to `remark-lint` and `remark`')
+
+  assert.strictEqual(result1.messages.length, 0)
+})

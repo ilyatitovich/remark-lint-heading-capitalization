@@ -31,6 +31,9 @@ Configuration (TypeScript type).
 - `lowerCaseWords` (`string[]`, optional, example: `['die', 'der', 'und']`)
   — extends the default list of lowercase words.
 
+- `exclude` (`string[]`, optional, example: `['remark-lint', 'remark']`)
+  — exclude the words from capitalization.
+
 ## Examples
 
 When this rule is turned on, the following `valid.md` is ok:
