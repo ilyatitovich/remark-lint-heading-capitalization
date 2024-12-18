@@ -24,7 +24,7 @@ export function fixTitle(title, options) {
     )
   })
 
-  // Putting correct title in the cache for prevent handling the same titles in other docs.
+  // Putting correct title in the cache to prevent handling the same titles in other docs.
   cache[correctTitle] = correctTitle
 
   return correctTitle
@@ -56,19 +56,34 @@ function correctWord(word, wordPosition, options = {}) {
 }
 
 function headingCapitalization(tree, file, options = {}) {
-  visit(tree, 'heading', node => {
-    const title = node.children.map(child => child.value).join('')
+  const { ignorePattern, lowerCaseWords = [] } = options
+  let ignorePatterns = []
 
-    // If the title is found among the correct titles - no calculations are performed.
-    if (cache[title]) {
+  // Process ignorePattern to create an array of regular expressions
+  if (Array.isArray(ignorePattern)) {
+    ignorePatterns = ignorePattern.map(pattern => new RegExp(pattern, 'g'))
+  } else if (ignorePattern) {
+    ignorePatterns = [new RegExp(ignorePattern, 'g')]
+  }
+
+  visit(tree, 'heading', node => {
+    let processedTitle = node.children.reduce((acc, child) => acc + (child.type === 'inlineCode' ? `\`${child.value}\`` : child.value), '')
+
+    // Create a processed version of the title by removing ignored patterns
+    for (const regex of ignorePatterns) {
+      processedTitle = processedTitle.replace(regex, '')
+    }
+
+    // If the processed title is found among the correct titles, skip further processing
+    if (cache[processedTitle]) {
       return
     }
 
-    const correctTitle = fixTitle(title, options)
+    const correctTitle = fixTitle(processedTitle, options)
 
-    if (correctTitle !== title) {
+    if (correctTitle !== processedTitle) {
       file.message(
-        `Heading capitalization error. Expected: '${correctTitle}' found: '${title}'`,
+        `Heading capitalization error. Expected: '${correctTitle}' found: '${processedTitle}'`,
         node
       )
     }
