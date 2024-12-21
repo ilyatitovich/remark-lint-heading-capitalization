@@ -91,4 +91,3 @@ test('custom multiple ignored patterns', async () => {
 
   assert.strictEqual(result1.messages.length, 0)
 })
-

@@ -8,7 +8,6 @@ const cache = {}
 
 export function fixTitle(title, options) {
   const correctTitle = title.replace(/[^\s-]+/g, (word, index) => {
-
     // If the word is already in uppercase, return it as is.
     if (isUpperCase(word)) {
       return word
@@ -16,7 +15,12 @@ export function fixTitle(title, options) {
 
     // If the word is not the first word in the title and should be lowercase, return it in lowercase.
     const lowerCaseWord = word.toLowerCase()
-    if (index !== 0 && [...lowerCaseWords, ...(options.lowerCaseWords ?? [])].includes(lowerCaseWord)) {
+    if (
+      index !== 0 &&
+      [...lowerCaseWords, ...(options.lowerCaseWords ?? [])].includes(
+        lowerCaseWord
+      )
+    ) {
       return lowerCaseWord
     }
 
@@ -46,7 +50,12 @@ function headingCapitalization(tree, file, options = {}) {
   }
 
   visit(tree, 'heading', node => {
-    let processedTitle = node.children.reduce((acc, child) => acc + (child.type === 'inlineCode' ? `\`${child.value}\`` : child.value), '')
+    let processedTitle = node.children.reduce(
+      (acc, child) =>
+        acc +
+        (child.type === 'inlineCode' ? `\`${child.value}\`` : child.value),
+      ''
+    )
 
     // Create a processed version of the title by removing ignored patterns
     for (const regex of ignorePatterns) {
