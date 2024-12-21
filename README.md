@@ -30,11 +30,8 @@ Configuration (TypeScript type).
 
 - `lowerCaseWords` (`string[]`, optional, example: `['die', 'der', 'und']`)
   — extends the default list of lowercase words.
-- `ignorePattern` (`string` || `string[]`, optional, example: `'package-[a-z]+'` or `['package-[a-z]+', 'node-[0-9]+']`)
-  — an array of or string regular expression pattern to ignore things that match the pattern.
-
-- `exclude` (`string[]`, optional, example: `['remark-lint', 'remark']`)
-  — exclude the words from capitalization.
+- `ignorePattern` (`string | string[]`, optional, example: `'package-[a-z]+'` or `['package-[a-z]+', 'node-[0-9]+']`)
+  — a single regular expression pattern as a string or an array of strings, used to ignore items that match the specified pattern(s).
 
 ## Examples
 

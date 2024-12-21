@@ -50,7 +50,6 @@ test('custom list of lowercase words', async () => {
   assert.strictEqual(result1.messages.length, 0)
 })
 
-
 test('custom ignored pattern', async () => {
   const result1 = await remark()
     .use(remarkLintHeadingCapitalization, {
@@ -86,17 +85,10 @@ test('custom multiple ignored patterns', async () => {
     .use(remarkLintHeadingCapitalization, {
       ignorePattern: ['package-[a-z]+', '`[^`]+`']
     })
-    .process('# Read About Our package-manager Barn! Also Check Our `awesome` Library!')
-
-  console.log(result1.messages);
-  
-test('custom list of excluded words', async () => {
-  const result1 = await remark()
-    .use(remarkLintHeadingCapitalization, {
-      exclude: ['remark-lint', 'remark']
-    })
-    .process('# Contributing to `remark-lint` and `remark`')
-
+    .process(
+      '# Read About Our package-manager Barn! Also Check Our `awesome` Library!'
+    )
 
   assert.strictEqual(result1.messages.length, 0)
 })
+
