@@ -33,6 +33,9 @@ Configuration (TypeScript type).
 - `ignorePattern` (`string` || `string[]`, optional, example: `'package-[a-z]+'` or `['package-[a-z]+', 'node-[0-9]+']`)
   — an array of or string regular expression pattern to ignore things that match the pattern.
 
+- `exclude` (`string[]`, optional, example: `['remark-lint', 'remark']`)
+  — exclude the words from capitalization.
+
 ## Examples
 
 When this rule is turned on, the following `valid.md` is ok:
