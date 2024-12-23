@@ -62,3 +62,9 @@ When this rule is turned on, the following `invalid.md` is **not** ok:
 
 4:1-4:19 warning Heading capitalization error. Expected: 'Flight-or-Fight' found: 'Flight-Or-fight'               heading-capitalization remark-lint
 ```
+
+## Support the Project
+
+Your support helps us improve and maintain this plugin! If you find it helpful, consider contributing to its future development:
+
+- [**Support Our Work**](https://ilyatitov.vercel.app/payments)
