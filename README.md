@@ -65,6 +65,6 @@ When this rule is turned on, the following `invalid.md` is **not** ok:
 
 ## Support the Project
 
-Your support helps us improve and maintain this plugin! If you find it helpful, consider contributing to its future development:
+If you find this tool helpful, consider supporting us:
 
 - [**Support Our Work**](https://ilyatitov.vercel.app/payments)
