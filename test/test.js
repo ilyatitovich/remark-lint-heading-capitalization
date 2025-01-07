@@ -4,6 +4,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { remark } from 'remark'
 import { compareMessage } from 'vfile-sort'
+import { extractContent } from '../index.js';
 import remarkLintHeadingCapitalization from '../index.js'
 
 const invalidMdPath = path.join(import.meta.dirname, 'docs', 'invalid.md')
@@ -90,4 +91,50 @@ test('custom multiple ignored patterns', async () => {
     )
 
   assert.strictEqual(result1.messages.length, 0)
+})
+
+test('heading with link', async () => {
+  const result1 = await remark()
+    .use(remarkLintHeadingCapitalization)
+    .process(
+      '# Check Out [Our Awesome Library](https://example.com) for More Info!'
+    )
+
+  assert.strictEqual(result1.messages.length, 0)
+})
+
+test('extracting various content from a heading node', async () => {
+  const tree = {
+    type: 'heading',
+    children: [
+      {
+        type: 'text',
+        value: 'Hello, World! '
+      },
+      {
+        type: 'lorem',
+      },
+      {
+        type: 'inlineCode',
+        value: 'code'
+      },
+      {
+        type: 'text',
+        value: ' '
+      },
+      {
+        type: 'linkReference',
+        children: [
+          {
+            type: 'text',
+            value: 'Link'
+          }
+        ]
+      }
+    ]
+  }
+
+  const content = extractContent(tree)
+
+  assert.strictEqual(content, 'Hello, World! `code` Link')
 })

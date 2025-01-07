@@ -6,6 +6,25 @@ import { capitalizeWord, isUpperCase } from './lib/utils.js'
 
 const cache = {}
 
+export function extractContent(node) {
+  // If the node is a text node, return the value
+  if (node.type === 'text') {
+    return node.value || ''
+  }
+
+  // If the node is an inlineCode node, return the value wrapped in backticks
+  if (node.type === 'inlineCode') {
+    return node.value ? `\`${node.value}\`` : ''
+  }
+
+  // If the node has children, return the concatenated value of all children
+  if (node.children && Array.isArray(node.children)) {
+    return node.children.map(extractContent).join('')
+  }
+
+  return node.value || ''
+}
+
 export function fixTitle(title, options) {
   const correctTitle = title.replace(/[^\s-]+/g, (word, index) => {
     // If the word is already in uppercase, return it as is.
@@ -50,12 +69,7 @@ function headingCapitalization(tree, file, options = {}) {
   }
 
   visit(tree, 'heading', node => {
-    let processedTitle = node.children.reduce(
-      (acc, child) =>
-        acc +
-        (child.type === 'inlineCode' ? `\`${child.value}\`` : child.value),
-      ''
-    )
+    let processedTitle = extractContent(node)
 
     // Create a processed version of the title by removing ignored patterns
     for (const regex of ignorePatterns) {
